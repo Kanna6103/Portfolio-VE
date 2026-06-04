@@ -1,23 +1,23 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useTheme } from '../hooks/use-theme';
 
 const StatsSection: React.FC = () => {
 
   const statsData = [
-    { value: '250+', label: 'Projects Completed' },
-    { value: '2+', label: 'Years Experience' },
+    { value: '150+', label: 'Projects Completed' },
+    { value: '2+', label: 'Years Experience on Visual Content Developer' },
     { value: '45M+', label: 'Views Across All Platforms' },
-    { value: '12+', label: 'Awards Win' }
+    { value: '5+', label: 'Years of Video Editing' }
   ];
 
   const skillsData = [
-    { skill: 'Video Editing', perc: 95 },
-    { skill: 'Color Grading', perc: 88 },
-    { skill: 'Sound Design', perc: 85 },
-    { skill: 'After Effects', perc: 90 }
+    { skill: 'Video Editing', perc: 90 },
+    { skill: 'Color Grading', perc: 75 },
+    { skill: 'Sound Design', perc: 80 },
+    { skill: 'After Effects', perc: 70 }
   ];
 
   return (
@@ -59,7 +59,7 @@ const StatsSection: React.FC = () => {
             gap: '30px'
           }}>
             {statsData.map((item, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ const StatsSection: React.FC = () => {
                 }}>
                   {item.label}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
@@ -125,7 +125,7 @@ const StatsSection: React.FC = () => {
                   overflow: 'hidden'
                 }}>
                   {/* Fill Bar */}
-                  <motion.div
+                  <m.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${item.perc}%` }}
                     viewport={{ once: true }}

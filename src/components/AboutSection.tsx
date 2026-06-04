@@ -1,15 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../hooks/use-theme';
 import { ShinyButton } from '@/components/ui/shiny-button';
 import Image from 'next/image';
 import profileImg from '@/assets/profile.webp';
 
 const skills = [
-  { name: 'Adobe Premiere Pro', level: 95 },
-  { name: 'After Effects', level: 90 },
+  { name: 'Adobe Premiere Pro', level: 90 },
+  { name: 'After Effects', level: 75 },
   { name: 'DaVinci Resolve', level: 85 },
   { name: 'Final Cut Pro X', level: 80 },
   { name: 'Cinema 4D', level: 60 }
@@ -118,7 +118,7 @@ const AboutSection = () => {
       `}</style>
 
       {/* Decorative Geometric Elements */}
-      <motion.div
+      <m.div
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         style={{ position: 'absolute', top: '10%', left: '5%', opacity: 0.4, color: 'var(--accent-color)' }}
@@ -126,7 +126,7 @@ const AboutSection = () => {
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
           <path d="M20 0L37.3205 30H2.67949L20 0Z" fill="currentColor"/>
         </svg>
-      </motion.div>
+      </m.div>
       <div style={{ position: 'absolute', bottom: '10%', left: '10%', width: '30px', height: '30px', border: '3px solid var(--accent-color)', borderRadius: '50%', opacity: 0.3 }} />
       <div style={{ position: 'absolute', top: '20%', right: '20%', width: '20px', height: '20px', border: '2px solid var(--accent-color)', borderRadius: '50%', opacity: 0.2 }} />
       <div style={{ position: 'absolute', bottom: '15%', right: '5%', width: '0', height: '0', borderLeft: '2px solid var(--accent-color)', borderRight: '15px solid transparent', borderBottom: '25px solid var(--accent-color)', transform: 'rotate(120deg)', opacity: 0.4 }} />
@@ -140,7 +140,7 @@ const AboutSection = () => {
           justifyContent: 'center'
         }}>
           {/* Left Side: Circular Profile */}
-          <motion.div 
+          <m.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -214,11 +214,11 @@ const AboutSection = () => {
                 pointerEvents: 'none'
               }} className="glare-effect" />
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right Side: Content & Content */}
           <div className="about-content" style={{ flex: '1 1 500px' }}>
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -238,7 +238,7 @@ const AboutSection = () => {
                 fontWeight: 600,
                 color: 'var(--text-primary)'
               }}>
-                Designing interfaces That Users Love"
+                "Designing interfaces That Users Love"
               </h3>
               
               <p style={{ 
@@ -247,19 +247,11 @@ const AboutSection = () => {
                 lineHeight: 1.6,
                 marginBottom: '40px'
               }}>
-                I'm Habib a passionate UI/UX Designer with over 2 years of experience creating visually appealing and user-friendly interfaces for both web and mobile applications.
-              </p>
-
-              {/* Professional Description */}
-              <p style={{ 
-                color: 'var(--text-secondary)', 
-                fontSize: '1.1rem', 
-                lineHeight: 1.6,
-                marginBottom: '50px'
-              }}>
-                My approach is deeply rooted in user-centric methodologies, blending analytical UX research with high-fidelity UI execution. From low-fidelity wireframing to interactive prototyping, I focus on building digital spaces that are not only beautiful but intuitively functional, ensuring every interaction feels natural and effortless.
-              </p>
-
+                I’m <span className="text-gradient font-bold">Rahul Mony</span> a video editor dedicated to turning moments into stories.
+                Over the years, I’ve worked on educational campaigns, large-scale technical festivals, promotional films, social media content, and brand-focused videos. 
+                My experience ranges from editing short-form reels to producing content for events involving thousands of participants.
+                Having collaborated with media teams, marketing departments, and content creators.          
+                </p>
               {/* Action Button */}
               <div style={{ marginTop: '20px', display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
                 <a href="/resume.pdf" download="Resume.pdf" style={{ textDecoration: 'none', display: 'inline-block' }}>
@@ -267,13 +259,13 @@ const AboutSection = () => {
                     Download Resume
                   </ShinyButton>
                 </a>
-                <motion.a 
+                <m.a 
                   href="#contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   style={{ textDecoration: 'none' }}
                 >
-                </motion.a>
+                </m.a>
                 <button 
                   onClick={() => setIsModalOpen(true)}
                   suppressHydrationWarning
@@ -311,7 +303,7 @@ const AboutSection = () => {
                   Education
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
         {/* CSS for Glare Hover Trigger */}
@@ -325,7 +317,7 @@ const AboutSection = () => {
       {/* Education Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -342,7 +334,7 @@ const AboutSection = () => {
             }}
             onClick={() => setIsModalOpen(false)}
           >
-            <motion.div
+            <m.div
               initial={{ scale: 0.9, y: 30, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.9, y: 30, opacity: 0 }}
@@ -458,8 +450,8 @@ const AboutSection = () => {
                   <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>Academy of Arts</p>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </section>

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Play, X, Clock, Film } from 'lucide-react';
 import { getCategoryBySlug } from '@/data/videos';
 
@@ -48,17 +48,17 @@ export default function CategoryPage() {
         <div style={{ position: 'relative', zIndex: 2, height: '100%', maxWidth: '1300px', margin: '0 auto', padding: '0 30px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '50px' }}>
           
           {/* Back Button */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+          <m.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
             <Link href="/#work" className="cat-back-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', marginBottom: '10px', transition: 'all 0.3s ease', fontSize: '0.9rem', fontWeight: 500 }}>
               <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.1)', transition: 'all 0.3s ease' }}>
                 <ArrowLeft size={16} />
               </div>
               <span style={{ letterSpacing: '1.5px', textTransform: 'uppercase' }}>Back to Portfolio</span>
             </Link>
-          </motion.div>
+          </m.div>
 
           {/* Category Title Area */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
+          <m.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
               <div style={{ width: '40px', height: '3px', background: 'var(--accent-color)', borderRadius: '2px' }} />
               <span style={{ color: 'var(--accent-color)', fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', fontSize: '0.8rem' }}>
@@ -71,10 +71,10 @@ export default function CategoryPage() {
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.15rem', maxWidth: '550px', lineHeight: 1.7 }}>
               {category.description}
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Stats Row */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ display: 'flex', gap: '30px', marginTop: '15px' }}>
+          <m.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} style={{ display: 'flex', gap: '30px', marginTop: '15px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem' }}>
               <Film size={16} style={{ color: 'var(--accent-color)' }} />
               <span><strong style={{ color: 'rgba(255,255,255,0.9)' }}>{category.videos.length}</strong> Videos</span>
@@ -83,7 +83,7 @@ export default function CategoryPage() {
               <Clock size={16} style={{ color: 'var(--accent-color)' }} />
               <span>Recently Updated</span>
             </div>
-          </motion.div>
+          </m.div>
 
         </div>
       </div>
@@ -94,19 +94,19 @@ export default function CategoryPage() {
       <div style={{ maxWidth: '1300px', margin: '0 auto', padding: '60px 30px 100px 30px', position: 'relative', zIndex: 10 }}>
         
         {/* Section Label */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '35px' }}>
+        <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '35px' }}>
           <h2 style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em' }}>
             All Videos
           </h2>
           <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
             {category.videos.length} {category.videos.length === 1 ? 'item' : 'items'}
           </span>
-        </motion.div>
+        </m.div>
 
         {/* Video Grid */}
         <div className="cat-video-grid">
           {category.videos.map((video, index) => (
-            <motion.div
+            <m.div
               key={video.id}
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function CategoryPage() {
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)', zIndex: 1, transition: 'opacity 0.3s ease' }} />
                 
                 {/* Play Button */}
-                <motion.div
+                <m.div
                   animate={{ scale: hoveredId === video.id ? 1.1 : 1, opacity: hoveredId === video.id ? 1 : 0.7 }}
                   transition={{ duration: 0.3 }}
                   style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 2 }}
@@ -146,7 +146,7 @@ export default function CategoryPage() {
                   }}>
                     <Play size={22} fill="#fff" color="#fff" style={{ marginLeft: '3px' }} />
                   </div>
-                </motion.div>
+                </m.div>
 
                 {/* Card Index Badge */}
                 <div style={{ position: 'absolute', top: '15px', left: '15px', zIndex: 2, background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)', borderRadius: '8px', padding: '4px 10px', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -165,7 +165,7 @@ export default function CategoryPage() {
                   {category.name}
                 </span>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
@@ -184,7 +184,7 @@ export default function CategoryPage() {
       {/* ============================================= */}
       <AnimatePresence>
         {selectedVideo && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -200,7 +200,7 @@ export default function CategoryPage() {
             >
               <X size={22} />
             </button>
-            <motion.div
+            <m.div
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
@@ -209,8 +209,8 @@ export default function CategoryPage() {
               style={{ width: '100%', maxWidth: '1100px', aspectRatio: '16/9', background: '#000', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 25px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05)' }}
             >
               <video src={selectedVideo} controls autoPlay style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
 

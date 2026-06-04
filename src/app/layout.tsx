@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Outfit, Cormorant_Garamond } from 'next/font/google';
 import { ThemeProvider } from '@/providers/theme-provider';
 import { LenisProvider } from '@/providers/lenis-provider';
+import { AnimationProvider } from '@/providers/animation-provider';
 import './globals.css';
 
 const outfit = Outfit({
@@ -49,9 +50,11 @@ export default function RootLayout({
     <html lang="en" className={`${outfit.variable} ${cormorantGaramond.variable}`} suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <LenisProvider>
-            {children}
-          </LenisProvider>
+          <AnimationProvider>
+            <LenisProvider>
+              {children}
+            </LenisProvider>
+          </AnimationProvider>
         </ThemeProvider>
       </body>
     </html>

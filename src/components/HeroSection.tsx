@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Play, Instagram, Linkedin, Facebook, Youtube, ArrowLeft, ArrowRight, Share2, CircleFadingPlus } from 'lucide-react';
-const FloatingLines = React.lazy(() => import('./FloatingLines'));
+import { m } from 'framer-motion';
+import { Play, Instagram, Linkedin, Youtube, ArrowLeft, ArrowRight, Share2, CircleFadingPlus } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+
 import { FloatingButton, FloatingButtonItem } from './ui/floating-button';
 
 import { useTheme } from '../hooks/use-theme';
@@ -40,10 +41,11 @@ const HeroSection = () => {
       display: 'flex',
       alignItems: 'center',
       paddingTop: '60px',
+      overflow: 'hidden',
       transition: 'background-color 0.4s ease, color 0.4s ease, backdrop-filter 0.4s ease'
     }}>
       {/* Dynamic Background Animation */}
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -54,26 +56,9 @@ const HeroSection = () => {
           pointerEvents: 'none' 
         }}
       >
-        {isBgMounted && !isMobile && (
-          <React.Suspense fallback={<div />}>
-            <FloatingLines
-              linesGradient={darkPalette}
-              enabledWaves={["top","middle","bottom"]}
-              lineCount={3}
-              lineDistance={12}
-              lineOpacity={0.3}
-              bendRadius={5}
-              bendStrength={-0.4}
-              interactive={true}
-              parallax={true}
-              parallaxStrength={0.15}
-              animationSpeed={0.6}
-              mixBlendMode="screen"
-            />
-          </React.Suspense>
-        )}
+
         {/* MagicRings removed for light theme to use only grid lines */}
-      </motion.div>
+      </m.div>
 
       {/* Mobile-only Glow Mesh */}
       {isMobile && (
@@ -90,32 +75,29 @@ const HeroSection = () => {
             left: '20%',
             width: '350px',
             height: '350px',
-            background: 'radial-gradient(circle, rgba(38, 0, 255, 0.68) 100%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(255, 174, 0, 0.68) 100%, transparent 70%)',
             filter: 'blur(100px)',
-            borderRadius: '50%'
-          }} />
-          <div className="glow-blob" style={{
-            position: 'absolute',
-            top: '20%',
-            left: '-35%',
-            width: '300px',
-            height: '300px',
-            background: 'radial-gradient(circle, rgba(255, 0, 234, 1) 20%, transparent 100%)',
-            filter: 'blur(15px)',
-            borderRadius: '50%'
-          }} />
-          <div className="glow-blob" style={{
-            position: 'absolute',
-            top: '40%',
-            left: '40%',
-            width: '400px',
-            height: '400px',
-            background: 'radial-gradient(circle, rgba(0, 251, 255, 0.51) 20%, transparent 100%)',
-            filter: 'blur(10px)',
             borderRadius: '50%'
           }} />
         </div>
       )}
+
+      {/* Glowing Semi-Circle Dome */}
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '1300px',
+        height: '1300px',
+        background: 'radial-gradient(ellipse at top, rgba(234, 228, 51, 0.3) 0%, transparent 70%)',
+        borderTop: '2px solid rgba(234, 255, 49, 0.8)',
+        borderRadius: '50% 50% 50% 50%',
+        boxShadow: '0 -20px 80px rgba(234, 182, 51, 0.6), inset 0 20px 60px rgba(255, 183, 0, 0.3)',
+        zIndex: 1,
+        pointerEvents: 'none',
+        filter: 'drop-shadow(0 0 30px #ffaa00ff 0.8))'
+      }} />
 
       {/* Ambient Glowing Ball elements */}
       <div className="glow-blob" style={{
@@ -125,21 +107,8 @@ const HeroSection = () => {
         width: '400px',
         height: '400px',
         borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(234, 185, 51, 0.2) 0%, transparent 70%)',
         filter: 'blur(100px)',
-        zIndex: 1,
-        pointerEvents: 'none'
-      }} />
-
-      <div className="glow-blob" style={{
-        position: 'absolute',
-        bottom: '10%',
-        left: '-8%',
-        width: '450px',
-        height: '450px',
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255, 51, 102, 0.3) 0%, transparent 70%)',
-        filter: 'blur(120px)',
         zIndex: 1,
         pointerEvents: 'none'
       }} />
@@ -173,13 +142,13 @@ const HeroSection = () => {
             justifyContent: 'center',
             gap: '2.5rem'
           }}>
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.3 }}
               style={{ position: 'relative', zIndex: 30, paddingLeft: '0px' }}
             >
-              <motion.span
+              <m.span
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 0.9, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -195,8 +164,8 @@ const HeroSection = () => {
                 }}
               >
                 hey, i am
-              </motion.span>
-              <motion.span
+              </m.span>
+              <m.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -210,8 +179,8 @@ const HeroSection = () => {
                   marginBottom: '1rem'
                 }}
               >
-                Jessie Pinkman
-              </motion.span>
+                Rahul Mony
+              </m.span>
               <h1 className="text-serif" style={{
                 fontSize: 'clamp(4rem, 14vw, 11rem)',
                 lineHeight: 0.8,
@@ -223,27 +192,27 @@ const HeroSection = () => {
                 flexWrap: 'wrap',
                 gap: '0.2em'
               }}>
-                <motion.span 
+                <m.span 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
                   style={{ fontStyle: 'italic', fontWeight: 300 }}
                 >
                   Video
-                </motion.span>
-                <motion.span 
+                </m.span>
+                <m.span 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1.0, ease: "easeOut" }}
                 >
                   Editor
-                </motion.span>
+                </m.span>
               </h1>
-            </motion.div>
+            </m.div>
 
             {/* Description Section */}
             <div style={{ color: 'var(--text-primary)' }}>
-              <motion.p
+              <m.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 0.5, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
@@ -257,19 +226,19 @@ const HeroSection = () => {
                 }}
               >
                 We are a video production studio that creates high-quality content so you can reach a bigger audience
-              </motion.p>
+              </m.p>
             </div>
 
             {/* Mobile Social Links Row */}
-            <div className="show-mobile socials-row">
+            <div className="show-mobile socials-row" style={{ position: 'relative', zIndex: 50 }}>
                 <div style={{ display: 'flex', gap: '15px' }}>
                   {[
-                    { Icon: Instagram, href: "#", label: "Instagram" },
-                    { Icon: Linkedin, href: "#", label: "LinkedIn" },
-                    { Icon: Facebook, href: "#", label: "Facebook" },
-                    { Icon: Youtube, href: "#", label: "YouTube" }
+                    { Icon: Instagram, href: "https://www.instagram.com/easy_.bro/", label: "Instagram" },
+                    { Icon: Linkedin, href: "https://www.linkedin.com/in/rahul-singh-66729b278", label: "LinkedIn" },
+                    { Icon: FaWhatsapp, href: "#", label: "WhatsApp" },
+                    { Icon: Youtube, href: "https://www.youtube.com/@easybro726/videos", label: "YouTube" }
                   ].map(({ Icon, href, label }, index2) => (
-                    <a key={index2} href={href} aria-label={label} style={{
+                    <a key={index2} href={href} aria-label={label} target="_blank" rel="noopener noreferrer" style={{
                       width: '44px',
                       height: '44px',
                       borderRadius: '50%',
@@ -288,7 +257,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Side: Play Button & Social Links */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             className="hero-socials"
@@ -302,7 +271,7 @@ const HeroSection = () => {
             }}
           >
             {/* Play Button & Circle Text */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               className="hidden-mobile"
@@ -322,7 +291,7 @@ const HeroSection = () => {
                 alignItems: 'center',
                 justifyContent: 'center'
               }}>
-                <motion.div
+                <m.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
                   style={{
@@ -341,9 +310,9 @@ const HeroSection = () => {
                       </textPath>
                     </text>
                   </svg>
-                </motion.div>
+                </m.div>
 
-                <motion.div 
+                <m.div 
                   whileHover={{ scale: 1.05 }}
                   style={{
                     width: '100px',
@@ -360,7 +329,7 @@ const HeroSection = () => {
                   }}
                 >
                   <Play size={36} fill="currentColor" color="currentColor" style={{ marginLeft: '4px', color: 'var(--text-primary)' }} />
-                </motion.div>
+                </m.div>
               </div>
 
               {/* Desktop Social Links */}
@@ -392,15 +361,17 @@ const HeroSection = () => {
                   </div>
                 }>
                   {[
-                    { Icon: Instagram, href: "#", color: '#FFB600', label: "Instagram" },
-                    { Icon: Linkedin, href: "#", color: '#FFB600', label: "LinkedIn" },
-                    { Icon: Facebook, href: "#", color: '#FFB600', label: "Facebook" },
-                    { Icon: Youtube, href: "#", color: '#FFB600', label: "YouTube" }
+                    { Icon: Instagram, href: "https://www.instagram.com/easy_.bro/", color: '#FFB600', label: "Instagram" },
+                    { Icon: Linkedin, href: "https://www.linkedin.com/in/rahul-singh-66729b278", color: '#FFB600', label: "LinkedIn" },
+                    { Icon: FaWhatsapp, href: "#", color: '#FFB600', label: "WhatsApp" },
+                    { Icon: Youtube, href: "https://www.youtube.com/@easybro726/videos", color: '#FFB600', label: "YouTube" }
                   ].map(({ Icon, href, color, label }, index) => (
                     <FloatingButtonItem key={index}>
-                      <motion.a
+                      <m.a
                         href={href}
                         aria-label={label}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ 
                         scale: 1.15, 
                         color: '#FFB600', 
@@ -422,7 +393,7 @@ const HeroSection = () => {
                         }}
                       >
                         <Icon size={18} cursor="pointer" />
-                      </motion.a>
+                      </m.a>
                     </FloatingButtonItem>
                   ))}
                 </FloatingButton>
@@ -430,8 +401,8 @@ const HeroSection = () => {
               </div>
 
 
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </div>
     </section>

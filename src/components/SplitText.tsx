@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { Variants, HTMLMotionProps } from 'framer-motion';
 
 interface SplitTextProps {
@@ -50,7 +50,7 @@ const SplitText: React.FC<SplitTextProps> = ({
   const items = type === 'words' ? text.split(' ') : text.split('');
 
   return (
-    <motion.span
+    <m.span
       className={className}
       variants={containerVariants}
       initial="hidden"
@@ -59,7 +59,7 @@ const SplitText: React.FC<SplitTextProps> = ({
       style={{ display: 'inline-block', ...style } as any}
     >
       {items.map((item, index) => (
-        <motion.span
+        <m.span
           key={index}
           variants={childVariants}
           style={{ 
@@ -68,9 +68,9 @@ const SplitText: React.FC<SplitTextProps> = ({
           }}
         >
           {item}{type === 'words' && index !== items.length - 1 ? '\u00A0' : ''}
-        </motion.span>
+        </m.span>
       ))}
-    </motion.span>
+    </m.span>
   );
 };
 

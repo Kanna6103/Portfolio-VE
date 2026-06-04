@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Play, X, ChevronLeft, ChevronRight, Folder, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -212,7 +212,7 @@ const PortfolioSection = () => {
                 categories.map((cat, index) => {
                   const count = projects.filter(p => p.category === cat).length;
                   return (
-                    <motion.div
+                    <m.div
                       key={cat}
                       className="portfolio-card"
                       initial={{ opacity: 0, scale: 0.9 }}
@@ -249,7 +249,7 @@ const PortfolioSection = () => {
                       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 40%, transparent 100%)', zIndex: 1, borderRadius: 'inherit' }} />
                       
                       {/* Static Title (Before Hover) */}
-                      <motion.div 
+                      <m.div 
                         animate={{ opacity: hoveredFolderCat === cat ? 0 : 1 }}
                         transition={{ duration: 0.3 }}
                         style={{
@@ -264,10 +264,10 @@ const PortfolioSection = () => {
                          <h3 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff', textShadow: '0 2px 10px rgba(0,0,0,0.6)', letterSpacing: '-0.02em' }}>
                             {cat}
                          </h3>
-                      </motion.div>
+                      </m.div>
 
                       {/* Glass Blur Hover Overlay */}
-                      <motion.div 
+                      <m.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ 
                           opacity: hoveredFolderCat === cat ? 1 : 0,
@@ -300,7 +300,7 @@ const PortfolioSection = () => {
                                </p>
                             </div>
                          <Link href={`/content/${toSlug(cat)}`} style={{ textDecoration: 'none' }}>
-                           <motion.div 
+                           <m.div 
                              style={{
                                display: 'flex',
                                alignItems: 'center',
@@ -320,22 +320,22 @@ const PortfolioSection = () => {
                              onMouseLeave={() => setHoveredBtnCat(null)}
                            >
                             <span>View</span>
-                            <motion.div                               animate={{ rotate: hoveredBtnCat === cat ? -45 : 0 }}
+                            <m.div                               animate={{ rotate: hoveredBtnCat === cat ? -45 : 0 }}
                                transition={{ duration: 0.2, ease: 'easeOut' }}
                               style={{ display: 'flex', alignItems: 'center' }}
                             >
                                <ArrowRight size={16} strokeWidth={2.5} />
-                            </motion.div>
-                          </motion.div>
+                            </m.div>
+                          </m.div>
                          </Link>
-                         </motion.div>
-                    </motion.div>
+                         </m.div>
+                    </m.div>
                   );
                 })
               ) : (
                 filteredProjects.map((project) => (
                   <Link href={`/content/${toSlug(project.category)}`} key={project.id} style={{ display: 'block', textDecoration: 'none' }}>
-                    <motion.div
+                    <m.div
                       className="portfolio-card"
                       initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -409,7 +409,7 @@ const PortfolioSection = () => {
                          {project.category}
                        </span>
                     </div>
-                  </motion.div>
+                  </m.div>
                  </Link>
                 ))
               )}
@@ -488,7 +488,7 @@ const PortfolioSection = () => {
       {/* Video Modal */}
       <AnimatePresence>
         {selectedVideo && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -529,7 +529,7 @@ const PortfolioSection = () => {
               <X size={24} />
             </button>
             
-            <motion.div
+            <m.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
@@ -551,8 +551,8 @@ const PortfolioSection = () => {
                 autoPlay 
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         )}
       </AnimatePresence>
     </section>

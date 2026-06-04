@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ShinyButton } from '@/components/ui/shiny-button';
 import { useTheme } from '../hooks/use-theme';
 import { Phone, Mail } from 'lucide-react';
@@ -92,7 +92,7 @@ const ContactSection: React.FC = () => {
           alignItems: 'center'
         }}>
           {/* Left Column: Descriptive Text */}
-          <motion.div
+          <m.div
             className="contact-left-content"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -107,7 +107,7 @@ const ContactSection: React.FC = () => {
               lineHeight: 1.1,
               letterSpacing: '-0.03em'
             }}>
-              Get In touch <br /> <span className='text-gradient'>with us!</span>
+              Let’s Create Something <br /> <span className='text-gradient'>Worth Watching ! </span>
             </h2>
 
             <p style={{ 
@@ -116,7 +116,17 @@ const ContactSection: React.FC = () => {
               lineHeight: 1.6, 
               maxWidth: '380px' 
             }}>
-              Have questions or ideas? We'd love to hear from you. Reach out anytime and let's connect.
+            Whether it’s a reel, promotional film, event highlight, or brand story, 
+            I’m always excited to collaborate on meaningful projects.      
+            </p>
+
+            <p style={{ 
+              color: '#fff', 
+              fontSize: '1.1rem', 
+              lineHeight: 1.6, 
+              maxWidth: '380px' 
+            }}>
+            Available for freelance, collaborations, and long-term projects.     
             </p>
 
             {/* Contact Information */}
@@ -134,7 +144,7 @@ const ContactSection: React.FC = () => {
                 }}>
                   <Phone size={18} style={{ color: 'var(--accent-color)' }} />
                 </div>
-                <span style={{ fontSize: '1.05rem', fontWeight: 600 }}>+1 (234) 567-890</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 600 }}>+91 9791995772</span>
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#fff' }}>
@@ -150,13 +160,13 @@ const ContactSection: React.FC = () => {
                 }}>
                   <Mail size={18} style={{ color: 'var(--accent-color)' }} />
                 </div>
-                <span style={{ fontSize: '1.05rem', fontWeight: 600 }}>contact@habib.com</span>
+                <span style={{ fontSize: '1.05rem', fontWeight: 600 }}>rahulatwork05@gmail.com</span>
               </div>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right Column: Form Box */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -309,7 +319,7 @@ const ContactSection: React.FC = () => {
                 </ShinyButton>
               </div>
             </form>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

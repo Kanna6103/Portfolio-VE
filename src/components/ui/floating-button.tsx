@@ -1,7 +1,7 @@
 'use client';
 
 import { type ReactNode, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { useOnClickOutside } from 'usehooks-ts';
 
 type FloatingButtonProps = {
@@ -52,7 +52,7 @@ function FloatingButton({ className, children, triggerContent, direction = 'left
     <div className={`flex flex-col items-center relative ${className || ''}`}>
       <AnimatePresence>
         {isOpen && (
-          <motion.ul
+          <m.ul
             key="floating-menu-list"
             className={`flex items-center absolute gap-2 ${
               direction === 'left' 
@@ -64,9 +64,9 @@ function FloatingButton({ className, children, triggerContent, direction = 'left
             exit="hidden"
             variants={list}>
             {children}
-          </motion.ul>
+          </m.ul>
         )}
-        <motion.div
+        <m.div
           key="floating-menu-trigger"
           variants={btn}
           animate={isOpen ? 'visible' : 'hidden'}
@@ -75,14 +75,14 @@ function FloatingButton({ className, children, triggerContent, direction = 'left
           className="cursor-pointer"
         >
           {triggerContent}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </div>
   );
 }
 
 function FloatingButtonItem({ children }: FloatingButtonItemProps) {
-  return <motion.li variants={item}>{children}</motion.li>;
+  return <m.li variants={item}>{children}</m.li>;
 }
 
 export { FloatingButton, FloatingButtonItem };

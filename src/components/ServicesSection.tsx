@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Video, Scissors, Sparkles, ChevronDown } from 'lucide-react';
 import { useTheme } from '../hooks/use-theme';
 
@@ -25,9 +25,9 @@ const ServicesSection = () => {
     },
     {
       icon: <Sparkles size={40} />,
-      title: 'VFX & Motion',
+      title: 'Freelance',
       description: 'Adding absolute magic. Custom 2D/3D motion graphics, fluid typography, CGI Compositing and dynamic transitions that push the cinematics beyond reality.',
-      features: ['2D/3D Title Cards', 'CGI Compositing', 'Dynamic Transitions', 'Motion Graphics'],
+      features: ['Content Writing', 'Thumbnail Creation', 'Content Creation', 'Video Editing'],
       accent: '#FFB600',
     }
   ];
@@ -44,7 +44,7 @@ const ServicesSection = () => {
         
         {/* Title Header */}
         <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-          <motion.h2 
+          <m.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -57,8 +57,8 @@ const ServicesSection = () => {
             }}
           >
             My <span className="text-gradient">Services</span>
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -72,7 +72,7 @@ const ServicesSection = () => {
             }}
           >
             From concept to clean export. I provide premium video editing services setup to scale your content output universally.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* 3 cards Grid */}
@@ -83,7 +83,7 @@ const ServicesSection = () => {
           alignItems: 'start'
         }}>
           {services.map((service, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -156,40 +156,42 @@ const ServicesSection = () => {
                     color: service.accent,
                     transition: 'background-color 0.3s ease, border-color 0.3s ease'
                   }}>
-                    <motion.div
+                    <m.div
                       animate={{ rotate: expandedIndex === index ? 180 : 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       style={{ display: 'flex', alignItems: 'center' }}
                     >
                       <ChevronDown size={18} />
-                    </motion.div>
+                    </m.div>
                   </div>
                 </div>
 
                 <AnimatePresence>
                   {expandedIndex === index && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                       style={{ overflow: 'hidden' }}
                     >
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '8.5px', marginTop: '15px', alignItems: 'flex-start', paddingLeft: '15px' }}>
-                        {service.features.map((feat, fIdx) => (
-                          <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.90rem', color: 'var(--text-secondary)' }}>
-                            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: service.accent }} />
-                            <span>{feat}</span>
-                          </div>
-                        ))}
+                      <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '15px' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8.5px', alignItems: 'flex-start' }}>
+                          {service.features.map((feat, fIdx) => (
+                            <div key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.90rem', color: 'var(--text-secondary)' }}>
+                              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: service.accent }} />
+                              <span>{feat}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
               </div>
 
 
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

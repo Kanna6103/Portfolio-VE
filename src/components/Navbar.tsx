@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import Image from 'next/image';
 import { ShinyButton } from '@/components/ui/shiny-button';
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
       justifyContent: 'center',
       padding: '0 20px'
     }}>
-      <motion.nav
+      <m.nav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         className="nav-responsive"
@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
               key={link.name} 
               style={{ position: 'relative' }}
             >
-              <motion.a 
+              <m.a 
                 href={link.href}
                 whileHover={{ 
                   color: '#FFB600'
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {link.name}
-              </motion.a>
+              </m.a>
 
 
             </div>
@@ -146,12 +146,12 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
-      </motion.nav>
+      </m.nav>
 
       {/* Mobile Menu Dropdown Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -174,7 +174,7 @@ const Navbar: React.FC = () => {
             }}
           >
             {navLinks.map((link) => (
-              <motion.a 
+              <m.a 
                 key={link.name} 
                 href={link.href} 
                 onClick={() => setMobileMenuOpen(false)}
@@ -191,7 +191,7 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {link.name}
-              </motion.a>
+              </m.a>
             ))}
             
             {/* Mobile Contact Button in Menu */}
@@ -200,7 +200,7 @@ const Navbar: React.FC = () => {
                 Let's Talk
               </ShinyButton>
             </a>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
